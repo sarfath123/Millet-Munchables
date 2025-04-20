@@ -657,3 +657,113 @@
                 
                 <div class="copyright">
                     <p>&copy; 2025 Millet Munchables Private Limited. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 3D Animation with Three.js
+        const setupHero3DAnimation = () => {
+            const container = document.getElementById('hero-canvas');
+            
+            // Only setup if container exists (i.e., we're on the home page)
+            if (!container) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create millet grain 3D objects
+            const grains = [];
+            const colors = [0x5e8c31, 0xf9a825, 0x8d6e63];
+            
+            for (let i = 0; i < 25; i++) {
+                const geometry = new THREE.SphereGeometry(Math.random() * 0.5 + 0.3, 8, 8);
+                const material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)] });
+                const grain = new THREE.Mesh(geometry, material);
+                
+                // Position grains randomly
+                grain.position.x = (Math.random() - 0.5) * 15;
+                grain.position.y = (Math.random() - 0.5) * 15;
+                grain.position.z = (Math.random() - 0.5) * 5 - 5;
+                
+                // Add animation properties
+                grain.rotation.x = Math.random() * Math.PI;
+                grain.rotation.y = Math.random() * Math.PI;
+                grain.rotationSpeed = Math.random() * 0.02;
+                grain.floatSpeed = Math.random() * 0.01 + 0.005;
+                grain.floatRange = Math.random() * 0.5 + 0.5;
+                grain.floatOffset = Math.random() * Math.PI * 2;
+                
+                scene.add(grain);
+                grains.push(grain);
+            }
+            
+            camera.position.z = 10;
+            
+            // Animation loop
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                // Animate each grain
+                const time = Date.now() * 0.001;
+                grains.forEach(grain => {
+                    grain.rotation.x += grain.rotationSpeed;
+                    grain.rotation.y += grain.rotationSpeed * 0.8;
+                    grain.position.y = grain.position.y + Math.sin(time * grain.floatSpeed + grain.floatOffset) * 0.01;
+                });
+                
+                renderer.render(scene, camera);
+            };
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (container) {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                }
+            });
+        };
+        
+        // Initialize page
+        setupHero3DAnimation();
+        
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formStatus = document.getElementById('formStatus');
+            
+            // Simulate form submission
+            formStatus.innerHTML = '<div style="color: var(--primary-color);">Sending your message...</div>';
+            
+            // In a real implementation, you would send this data to a server
+            // This is just a simulation to show the user experience
+            setTimeout(() => {
+                formStatus.innerHTML = `<div style="color: var(--primary-color);">Thank you! Your message has been sent successfully.</div>`;
+                document.getElementById('contactForm').reset();
+                
+                // Email data that would be sent in a real implementation
+                console.log({
+                    to: 'info@milletmunchables.com',
+                    subject: `Contact Form: ${formData.get('subject')}`,
+                    body: `
+                        Name: ${formData.get('name')}
+                        Email: ${formData.get('email')}
+                        Phone: ${formData.get('phone')}
+                        Message: ${formData.get('message')}
+                    `
+                });
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
