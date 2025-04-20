@@ -310,9 +310,10 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Contact page styles */
-        .contact-page {
-            padding: 8rem 0 5rem;
+        /* Contact section styles */
+        .contact {
+            padding: 5rem 0;
+            background-color: white;
         }
         
         .contact-grid {
@@ -424,7 +425,7 @@
                     <a href="#about">About</a>
                     <a href="#products">Products</a>
                     <a href="#why-millets">Why Millets</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </nav>
         </div>
@@ -511,80 +512,40 @@
             </div>
         </section>
 
-        <!-- Why Millets Section -->
+        <!-- Why Millets Section - UPDATED -->
         <section class="why-millets" id="why-millets">
             <div class="container">
                 <h2 class="section-title" style="color: white;">Why Millets?</h2>
                 <div class="benefits-grid">
                     <div class="benefit-card">
-                        <div class="benefit-icon">🌾</div>
-                        <h3 class="benefit-title">Drought Resistant</h3>
-                        <p>Millets require 70% less water than rice, making them perfect for sustainable farming.</p>
+                        <div class="benefit-icon">🌱</div>
+                        <h3 class="benefit-title">Climate Resilient</h3>
+                        <p>Millets can grow in harsh conditions with minimal irrigation, making them ideal crops for climate change adaptation.</p>
                     </div>
                     
                     <div class="benefit-card">
-                        <div class="benefit-icon">💪</div>
-                        <h3 class="benefit-title">Nutritional Powerhouse</h3>
-                        <p>Rich in protein, fiber, and essential minerals like calcium, iron, and zinc.</p>
+                        <div class="benefit-icon">🌍</div>
+                        <h3 class="benefit-title">Sustainable Farming</h3>
+                        <p>Require 70% less water than rice and have a significantly lower carbon footprint than conventional grains.</p>
                     </div>
                     
                     <div class="benefit-card">
-                        <div class="benefit-icon">🌡️</div>
-                        <div class="benefit-icon">🌡️</div>
-                        <h3 class="benefit-title">Low Glycemic Index</h3>
-                        <p>Helps manage blood sugar levels and ideal for diabetic-friendly diets.</p>
+                        <div class="benefit-icon">👨‍🌾</div>
+                        <h3 class="benefit-title">Farmer Friendly</h3>
+                        <p>Lower production costs and suitable for small-scale farmers, supporting rural livelihoods and food security.</p>
                     </div>
                     
                     <div class="benefit-card">
-                        <div class="benefit-icon">♻️</div>
-                        <h3 class="benefit-title">Eco-Friendly</h3>
-                        <p>Lower carbon footprint compared to conventional grains like wheat and rice.</p>
+                        <div class="benefit-icon">🥗</div>
+                        <h3 class="benefit-title">Health Benefits</h3>
+                        <p>Rich in protein, fiber, vitamins, and minerals with a low glycemic index - perfect for balanced nutrition.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h3 class="footer-title">Millet Munchables</h3>
-                        <p>Revolutionizing food with sustainable, healthy, and delicious millet-based products.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📱</a>
-                            <a href="#" class="social-link">📷</a>
-                            <a href="#" class="social-link">🐦</a>
-                            <a href="#" class="social-link">📘</a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h3 class="footer-title">Quick Links</h3>
-                        <p><a href="index.html" style="color: white; text-decoration: none;">Home</a></p>
-                        <p><a href="#about" style="color: white; text-decoration: none;">About Us</a></p>
-                        <p><a href="#products" style="color: white; text-decoration: none;">Products</a></p>
-                        <p><a href="contact.html" style="color: white; text-decoration: none;">Contact Us</a></p>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h3 class="footer-title">Contact</h3>
-                        <p>📍 Hyderabad, Telangana, India</p>
-                        <p>📞 +91 94XXXXXXXX</p>
-                        <p>✉️ info@milletmunchables.com</p>
-                    </div>
-                </div>
-                
-                <div class="copyright">
-                    <p>&copy; 2025 Millet Munchables Private Limited. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Contact Page Content -->
-    <div id="contact-page" class="hidden">
-        <section class="contact-page">
+        <!-- Contact Section - ADDED -->
+        <section class="contact" id="contact">
             <div class="container">
                 <h2 class="section-title">Contact Us</h2>
                 <div class="contact-grid">
@@ -661,127 +622,38 @@
                 </div>
             </div>
         </section>
-    </div>
 
-    <script>
-        // 3D Animation with Three.js
-        const setupHero3DAnimation = () => {
-            const container = document.getElementById('hero-canvas');
-            
-            // Only setup if container exists (i.e., we're on the home page)
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setClearColor(0x000000, 0);
-            container.appendChild(renderer.domElement);
-            
-            // Create millet grain 3D objects
-            const grains = [];
-            const colors = [0x5e8c31, 0xf9a825, 0x8d6e63];
-            
-            for (let i = 0; i < 25; i++) {
-                const geometry = new THREE.SphereGeometry(Math.random() * 0.5 + 0.3, 8, 8);
-                const material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)] });
-                const grain = new THREE.Mesh(geometry, material);
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3 class="footer-title">Millet Munchables</h3>
+                        <p>Revolutionizing food with sustainable, healthy, and delicious millet-based products.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">📷</a>
+                            <a href="#" class="social-link">🐦</a>
+                            <a href="#" class="social-link">📘</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <p><a href="#" style="color: white; text-decoration: none;">Home</a></p>
+                        <p><a href="#about" style="color: white; text-decoration: none;">About Us</a></p>
+                        <p><a href="#products" style="color: white; text-decoration: none;">Products</a></p>
+                        <p><a href="#why-millets" style="color: white; text-decoration: none;">Why Millets</a></p>
+                        <p><a href="#contact" style="color: white; text-decoration: none;">Contact Us</a></p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Contact</h3>
+                        <p>📍 Hyderabad, Telangana, India</p>
+                        <p>📞 +91 94XXXXXXXX</p>
+                        <p>✉️ info@milletmunchables.com</p>
+                    </div>
+                </div>
                 
-                // Position grains randomly
-                grain.position.x = (Math.random() - 0.5) * 15;
-                grain.position.y = (Math.random() - 0.5) * 15;
-                grain.position.z = (Math.random() - 0.5) * 5 - 5;
-                
-                // Add animation properties
-                grain.rotation.x = Math.random() * Math.PI;
-                grain.rotation.y = Math.random() * Math.PI;
-                grain.rotationSpeed = Math.random() * 0.02;
-                grain.floatSpeed = Math.random() * 0.01 + 0.005;
-                grain.floatRange = Math.random() * 0.5 + 0.5;
-                grain.floatOffset = Math.random() * Math.PI * 2;
-                
-                scene.add(grain);
-                grains.push(grain);
-            }
-            
-            camera.position.z = 10;
-            
-            // Animation loop
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                // Animate each grain
-                const time = Date.now() * 0.001;
-                grains.forEach(grain => {
-                    grain.rotation.x += grain.rotationSpeed;
-                    grain.rotation.y += grain.rotationSpeed * 0.8;
-                    grain.position.y = grain.position.y + Math.sin(time * grain.floatSpeed + grain.floatOffset) * 0.01;
-                });
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                if (container) {
-                    camera.aspect = container.clientWidth / container.clientHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
-                }
-            });
-        };
-        
-        // Page navigation
-        const showPage = (pageId) => {
-            document.querySelectorAll('div[id$="-page"]').forEach(page => {
-                page.classList.add('hidden');
-            });
-            document.getElementById(pageId).classList.remove('hidden');
-            
-            if (pageId === 'home-page') {
-                setupHero3DAnimation();
-            }
-        };
-        
-        // Check if we're on contact page based on URL
-        if (window.location.pathname.includes('contact.html')) {
-            showPage('contact-page');
-        } else {
-            showPage('home-page');
-            setupHero3DAnimation();
-        }
-        
-        // Form submission
-        function submitForm(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const formStatus = document.getElementById('formStatus');
-            
-            // Simulate form submission
-            formStatus.innerHTML = '<div style="color: var(--primary-color);">Sending your message...</div>';
-            
-            // In a real implementation, you would send this data to a server
-            // This is just a simulation to show the user experience
-            setTimeout(() => {
-                formStatus.innerHTML = `<div style="color: var(--primary-color);">Thank you! Your message has been sent to arfathhussain99@gmail.com</div>`;
-                document.getElementById('contactForm').reset();
-                
-                // Email data that would be sent in a real implementation
-                console.log({
-                    to: 'arfathhussain99@gmail.com',
-                    subject: `Contact Form: ${formData.get('subject')}`,
-                    body: `
-                        Name: ${formData.get('name')}
-                        Email: ${formData.get('email')}
-                        Phone: ${formData.get('phone')}
-                        Message: ${formData.get('message')}
-                    `
-                });
-            }, 1500);
-        }
-    </script>
-</body>
-</html>
+                <div class="copyright">
+                    <p>&copy; 2025 Millet Munchables Private Limited. All Rights Reserved.</p>
